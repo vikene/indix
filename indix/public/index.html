@@ -153,7 +153,7 @@ $("#process").click(function(event){
   }
   final_json= final_json + "]}";
   var length = final_json.length;
-  final_json[length-2]=" ";
+  final_json[length-3]=" ";
   console.log(final_json)
   socket.emit("output_please",final_json);
 })
