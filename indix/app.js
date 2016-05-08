@@ -6,7 +6,7 @@ var exec = require('child_process').exec;
 var Horseman = require('node-horseman');
 var horseman = new Horseman();
 var fs = require('fs');
-var msgG="https://www.reddit.com/?count=50"
+var msgG="https://www.reddit.com"
 app.use(express.static('public'));
 
 io.on('connection',function(socket)
@@ -14,13 +14,13 @@ io.on('connection',function(socket)
   console.log("Connected !!");
   socket.on('edit text',function(msg){
     var da = String(msgG);
-
+    
               io.emit("add right pan",msg,data)
-            })
+
 
   })
   var inject= " ";
-  fs.readFile('public/inject.js', 'utf8', function (err,data) {
+  fs.readFile('public\\inject.js', 'utf8', function (err,data) {
 if (err) {
 return console.log(err);
 }
@@ -39,7 +39,7 @@ console.log(inject)
         str = str.split("</body>")
       mydata = str[0] + inject;
 
-        fs.writeFile("public/1.html",mydata,function(err,data){
+        fs.writeFile("public\\1.html",mydata,function(err,data){
           io.emit('reloadiframe',"reload");
         });
 
