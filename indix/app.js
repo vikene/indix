@@ -6,7 +6,7 @@ var exec = require('child_process').exec;
 var Horseman = require('node-horseman');
 var horseman = new Horseman();
 var fs = require('fs');
-var msgG="https://www.reddit.com"
+var msgG="https://www.reddit.com/?count=50"
 app.use(express.static('public'));
 
 io.on('connection',function(socket)
@@ -14,10 +14,7 @@ io.on('connection',function(socket)
   console.log("Connected !!");
   socket.on('edit text',function(msg){
     var da = String(msgG);
-    var horsema = new Horseman();
-    horsema.open(da)
-            .text(msg)
-            .then(function(data){
+
               io.emit("add right pan",msg,data)
             })
 
