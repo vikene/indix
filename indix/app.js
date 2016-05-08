@@ -15,7 +15,7 @@ io.on('connection',function(socket)
   socket.on('edit text',function(msg){
     var da = String(msgG);
 
-              io.emit("add right pan",msg,data)
+              io.emit("add right pan",msg)
 
 
   })
