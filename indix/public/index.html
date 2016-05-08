@@ -136,6 +136,7 @@ $("#process").click(function(event){
     var o1 = $("#css"+i).val();
     var q1= $("#name"+i).val();
     var att = $("#select"+i).val();
+    if(o1 == "undefined"){continue;}
     final_json= final_json + "{";
     final_json = final_json + '"css": "'+o1+'",';
     final_json = final_json + '"attribute": "'+att+'",';
