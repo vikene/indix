@@ -79,7 +79,7 @@ console.log(inject)
         .then(function(data){
           console.log(JSON.stringify(jobj))
           //jobj.objects[i].summary = data
-          io.emit("appendSummary",name,data)
+          io.emit("appendSummary","noname",data)
 
         })
       }
