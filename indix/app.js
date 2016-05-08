@@ -57,7 +57,7 @@ console.log(inject)
     console.log(jobj.objects[0].css);
     for(var i=0;i<jobj.objects.length;i++)
     {
-      if(jobj.objects[i].attribute != "undefined")
+      if(jobj.objects[i].attribute != "undefined" && jobj.objects[i].attribute != "nothing" )
       {
         var da = String(msgG);
         var horsem = new Horseman();

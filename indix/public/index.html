@@ -107,6 +107,7 @@ $("#myurl").keypress(function(event) {
 socket.on('reloadiframe',function(message){
   var iframe = document.getElementById("myiframe");
   iframe.src = iframe.src;
+  $("#summaryy").val("")
 })
 
 $("#addbutton").click(function(event){
