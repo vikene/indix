@@ -152,6 +152,7 @@ $("#process").click(function(event){
 
   }
   final_json= final_json + "]}";
+  final_json = String(final_json);
   final_json.replace(",]}","]}");
   console.log(final_json)
   socket.emit("output_please",final_json);
