@@ -73,6 +73,7 @@ console.log(inject)
       else if(jobj.objects[i].attribute != "undefined"){
         var da = String(msgG);
         var horse = new Horseman();
+        var name = jobj.objects[i].name;
         horse.open(da)
         .text(jobj.objects[i].css)
         .then(function(data){
