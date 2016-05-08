@@ -6,7 +6,7 @@ var exec = require('child_process').exec;
 var Horseman = require('node-horseman');
 var horseman = new Horseman();
 var fs = require('fs');
-var msgG="https://www.reddit.com"
+var msgG="https://news.ycombinator.com/news?p=3"
 app.use(express.static('public'));
 
 io.on('connection',function(socket)
