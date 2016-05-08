@@ -152,12 +152,7 @@ $("#process").click(function(event){
 
   }
   final_json= final_json + "]}";
-  var length = final_json.length;
-  console.log(final_json[length-3] );
-  if(final_json[length-3] == ',')
-  {
-    final_json[length-3] = " ";
-  }
+  final_json.replace(",]}","]}");
   console.log(final_json)
   socket.emit("output_please",final_json);
 })
