@@ -23,7 +23,7 @@ io.on('connection',function(socket)
 
   })
   var inject= " ";
-  fs.readFile('public\\inject.js', 'utf8', function (err,data) {
+  fs.readFile('public/inject.js', 'utf8', function (err,data) {
 if (err) {
 return console.log(err);
 }
@@ -42,7 +42,7 @@ console.log(inject)
         str = str.split("</body>")
       mydata = str[0] + inject;
 
-        fs.writeFile("public\\1.html",mydata,function(err,data){
+        fs.writeFile("public/1.html",mydata,function(err,data){
           io.emit('reloadiframe',"reload");
         });
 
