@@ -70,7 +70,7 @@ console.log(inject)
                   io.emit("appendSummary",name,data)
                 })
       }
-      else{
+      else if(jobj.objects[i].attribute != "undefined"){
         var da = String(msgG);
         var horse = new Horseman();
         horse.open(da)
