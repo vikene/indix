@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Indix coding challenge
+</title>
+<link rel="stylesheet" href="/css/bootstrap.css" >
+<link rel="stylesheet" href="/css/sticky-footer.css">
+<script src="/js/bootstrap.js">
+</script>
+
+<style>
+.input-field{
+  font-size: 70px;
+}
+
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+
+ main {
+   flex: 1 0 auto;
+ }
+
+ #myurl{
+   width: 1000px;
+ }
+
+
+ .navi-form{
+   display: inline;
+ }
+
+ .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+}
+</style>
+</head>
+<body>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <nav class="navbar navbar-default">
+    <div class="navbar-form navbar-left"  >
+  <div class="form-group navi-form" >
+    <label>Enter URL</label>
+    <input id="myurl" type="form-control input-lg"  class="" >
+  </div>
+
+</div>
+  </nav
+
+
+
+
+     <div class="section">
+
+
+
+       <div class="row">
+         <div class="col-xs-12 col-md-10"> <iframe id="myiframe" src="1.html" width="100%" height="500px" ></iframe></div>
+         <div class="col-xs-6 col-md-2"> <h5 class="center">Webparser.io
+           <div class="container">
+              <button id="addbutton" >Add +</button>
+              <button id="process">execute</button>
+             <div class="row objectadd">
+
+
+               </div>
+             </div>
+           </div>
+
+         </h5></div>
+       </div>
+
+
+
+     </div>
+
+     <div class="footer ">
+           <div class="container">
+            Summary
+            <textarea id="summaryy" class="form-control" rows="3" ></textarea>
+           </div>
+         </div>
+
+
+
+
+
+
+<script>
+var mylist=[]
+var counter =0 ;
+var socket = io();
+$("#myurl").keypress(function(event) {
+    if (event.which == 13) {
+      socket.emit("newWebpage",$("#myurl").val());
+
+    }
+});
+
+socket.on('reloadiframe',function(message){
+  var iframe = document.getElementById("myiframe");
+  iframe.src = iframe.src;
+  $("#summaryy").val("")
+})
+
+$("#addbutton").click(function(event){
+
+
+$(".objectadd").append("<form id="+counter+">  <label>Css Selector</label>  <input id='css"+counter+"' type='text'/> <br><div class='col-md-5 col-md-offset-3'><select id='select"+counter+"' class='form-control'><option>nothing</option><option>href</option><option>src</option><option>value</option><option>width</option></select></div><br><br><div class='col-md-5'> <label> Name:</label></div> <input id='name"+counter+"' type='text' /><br> <div class='col-md-5 col-md-offset-4'><button type='button'  onclick='removeme("+counter+")' class='btn rmbutton btn-default'>Remove</button></div></form>");
+counter++;
+
+})
+function removeme(data){
+  $("#"+data).remove()
+
+}
+
+socket.on('add right pan', function(css){
+
+  $(".objectadd").append("<form id="+counter+">  <label>Css Selector</label>  <input id='css"+counter+"' type='text' value='"+css+"'/> <br><div class='col-md-5 col-md-offset-3'><select id='select"+counter+"' class='form-control'><option>nothing</option><option>href</option><option>src</option><option>value</option><option>width</option></select></div><br><br><div class='col-md-5'> <label> Name:</label></div> <input id='name"+counter+"' type='text' /><br> <div class='col-md-5 col-md-offset-4'><button type='button'  onclick='removeme("+counter+")' class='btn rmbutton btn-default'>Remove</button></div></form>");
+counter++;
+})
+
+$("#process").click(function(event){
+  var mylist = []
+  var final_json='{"objects":[';
+  console.log(counter)
+  for(var i=0;i<counter;i++)
+  {
+    var o1 = $("#css"+i).val();
+    console.log(o1)
+    var q1= $("#name"+i).val();
+    var att = $("#select"+i).val();
+    if(o1 == null){continue;}
+    final_json= final_json + "{";
+    final_json = final_json + '"css": "'+o1+'",';
+    final_json = final_json + '"attribute": "'+att+'",';
+      final_json = final_json + '"summary": "sample",';
+    final_json = final_json + '"name": "'+q1+'"';
+    if(i+1 != counter)
+    {
+      final_json = final_json + "},";
+    }
+    else{
+      final_json = final_json + "}";
+    }
+
+  }
+  final_json= final_json + "]}";
+  final_json = String(final_json);
+  final_json = final_json.replace(",]}","]}");
+
+  console.log(final_json)
+  socket.emit("output_please",final_json);
+})
+
+socket.on("appendSummary",function(msg,msg1){
+  console.log(msg1);
+    $("#summaryy").append("{ name:"+msg+", summary:"+msg1+"}");
+})
+</script>
+
+
+
+</body>
+</html>
