@@ -124,17 +124,19 @@ function removeme(data){
 }
 
 socket.on('add right pan', function(css){
-  counter++;
-  $(".objectadd").append("<form id="+counter+">  <label>Css Selector</label>  <input id='css"+counter+"' type='text' value='"+css+"'/> <br><div class='col-md-5 col-md-offset-3'><select id='select"+counter+"' class='form-control'><option>nothing</option><option>href</option><option>src</option><option>value</option><option>width</option></select></div><br><br><div class='col-md-5'> <label> Name:</label></div> <input id='name"+counter+"' type='text' /><br> <div class='col-md-5 col-md-offset-4'><button type='button'  onclick='removeme("+counter+")' class='btn rmbutton btn-default'>Remove</button></div></form>");
 
+  $(".objectadd").append("<form id="+counter+">  <label>Css Selector</label>  <input id='css"+counter+"' type='text' value='"+css+"'/> <br><div class='col-md-5 col-md-offset-3'><select id='select"+counter+"' class='form-control'><option>nothing</option><option>href</option><option>src</option><option>value</option><option>width</option></select></div><br><br><div class='col-md-5'> <label> Name:</label></div> <input id='name"+counter+"' type='text' /><br> <div class='col-md-5 col-md-offset-4'><button type='button'  onclick='removeme("+counter+")' class='btn rmbutton btn-default'>Remove</button></div></form>");
+counter++;
 })
 
 $("#process").click(function(event){
   var mylist = []
   var final_json='{"objects":[';
+  console.log(counter)
   for(var i=0;i<counter;i++)
   {
     var o1 = $("#css"+i).val();
+    console.log(o1)
     var q1= $("#name"+i).val();
     var att = $("#select"+i).val();
     if(o1 == null){continue;}

@@ -6,14 +6,27 @@
  var socket = io();
 my_selector_generator = new CssSelectorGenerator;
 console.log("hey");
-document.body.addEventListener('click', function (event) {
+$('body').on('click',function(e){
+  e.preventDefault();
   // get reference to the element user clicked on
   var element = event.target;
   // get unique CSS selector for that element
   var selector = my_selector_generator.getSelector(element);
   // do whatever you need to do with that selector
   console.log('selector', selector);
-  socket.emit("edit text",prediction);
+  socket.emit("edit text",selector);
+  document.querySelector(selector).style.backgroundColor = "red";
+
+})
+document.body.addEventListener('click', function (event) {
+  // get reference to the element user clicked on
+  //var element = event.target;
+  // get unique CSS selector for that element
+  //var selector = my_selector_generator.getSelector(element);
+  // do whatever you need to do with that selector
+  //console.log('selector', selector);
+  //socket.emit("edit text",selector);
+  //document.querySelector(".example").style.backgroundColor = "red";
 });
 </script>
 </body></html>
