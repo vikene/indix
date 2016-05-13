@@ -12,6 +12,9 @@
     "express": "*",
     "materialize-css": "^0.97.6",
     "socket.io": "*",
-	"node-horseman":"*"
+	"node-horseman":"*",
+  "grunt-cli":"*",
+  "mocha":"*",
+  "chai":"*"
   }
 }
