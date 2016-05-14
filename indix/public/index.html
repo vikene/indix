@@ -106,6 +106,39 @@ var counter=0;
    $('select').material_select();
   counter++;
  })
+
+ $("#process").click(function(event){
+   var mylist = []
+   var final_json='{"objects":[';
+   console.log(counter)
+   for(var i=0;i<counter;i++)
+   {
+     var o1 = $("#css"+i).val();
+     console.log(o1)
+     var q1= $("#name"+i).val();
+     var att = $("#select"+i).val();
+     if(o1 == null){continue;}
+     final_json= final_json + "{";
+     final_json = final_json + '"css": "'+o1+'",';
+     final_json = final_json + '"attribute": "'+att+'",';
+       final_json = final_json + '"summary": "sample",';
+     final_json = final_json + '"name": "'+q1+'"';
+     if(i+1 != counter)
+     {
+       final_json = final_json + "},";
+     }
+     else{
+       final_json = final_json + "}";
+     }
+
+   }
+   final_json= final_json + "]}";
+   final_json = String(final_json);
+   final_json = final_json.replace(",]}","]}");
+
+   console.log(final_json)
+   socket.emit("output_please",final_json);
+ })
 </script>
 </body>
 </html>
