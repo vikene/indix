@@ -4,7 +4,9 @@ var vikeneAppControllers = angular.module('vikenAppControllers',[]);
 
 vikeneAppControllers.controller('hctrl',['$scope','$http','$location',function($scope,$http,$location)
                      {
+                       $scope.framesrc="0.html";
                        $scope.process = function(){
+                         $scope.framesrc ="0.html";
                          $location.url("/home/"+$scope.searchD);
                        }
 
@@ -17,6 +19,7 @@ vikeneAppControllers.controller('finalctrl', ['$scope','$http','$routeParams','$
 //$http.get('/json/'+$routeParams.projectID+'.json').success(function(dud){
 	//	$scope.projectID = dud;
 	//})
+   $scope.framesrc="2.html";
   $scope.process = function(){
     $location.url("/home/"+$scope.searchD);
     location.reload()

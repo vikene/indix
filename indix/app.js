@@ -21,7 +21,7 @@ if (err) {
 return console.log(err);
 }
 inject = data;
-console.log(inject)
+
 });
 
 app.get('/getnewiframe',function(req,res){
