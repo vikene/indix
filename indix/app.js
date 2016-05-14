@@ -6,8 +6,46 @@ var exec = require('child_process').exec;
 var Horseman = require('node-horseman');
 var horseman = new Horseman();
 var fs = require('fs');
+
+var bodyParser = require('body-parser');
 var msgG="https://news.ycombinator.com/news?p=3"
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+var inject= " ";
+fs.readFile('public/inject.js', 'utf8', function (err,data) {
+if (err) {
+return console.log(err);
+}
+inject = data;
+console.log(inject)
+});
+
+app.get('/getnewiframe',function(req,res){
+  console.log(req.query.urll);
+  var data ;
+  msg=req.query.urll;
+  msgG=msg;
+  console.log("refesh");
+  horseman
+    .open(msg)
+    .html()
+    .then(function(uree){
+      var str = String(uree);
+      str = str.split("</body>")
+    mydata = str[0] + inject;
+
+      fs.writeFile("public/1.html",mydata,function(err,data){
+        res.send("done!")
+      });
+
+
+    });
+
+})
 
 io.on('connection',function(socket)
 {
@@ -19,14 +57,7 @@ io.on('connection',function(socket)
 
 
   })
-  var inject= " ";
-  fs.readFile('public/inject.js', 'utf8', function (err,data) {
-if (err) {
-return console.log(err);
-}
-inject = data;
-console.log(inject)
-});
+
   socket.on("newWebpage",function (msg) {
     var data ;
     msgG=msg;

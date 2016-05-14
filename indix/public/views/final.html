@@ -1,8 +1,8 @@
 <nav>
 <div class="nav-wrapper">
-  <form>
+  <form ng-submit="process()">
     <div class="input-field">
-      <input id="search" type="search" required>
+      <input ng-model="searchD" id="search" type="search" required>
       <label for="search"><i class="material-icons">search</i></label>
       <i class="material-icons">close</i>
     </div>
@@ -14,11 +14,11 @@
 
      <div class="row">
     <div class="col s10">
-       <div class="col-xs-12 col-md-10"> <iframe id="myiframe" src="1.html" width="100%" height="500px" ></iframe></div>
+       <div class="col-xs-12 col-md-10"> <iframe id="myiframe" ng-src="{{framesrc}}" width="100%" height="500px" ></iframe></div>
     </div>
     <div class="col s2">
       <button id="addbutton" >Add +</button>
-      <button id="process">execute</button>
+      <button ng-click="myexecute()" id="process">execute</button>
      <div class="row objectadd">
 
 
@@ -34,7 +34,7 @@
 
       <div class="input-field col s12">
 
-        <textarea disabled id="summaryy" class="materialize-textarea"></textarea>
+        <textarea ng-model="sums" disabled id="summaryy" class="materialize-textarea"></textarea>
         <label for="summaryy">Summary</label>
       </div>
     </div>

@@ -15,6 +15,7 @@
 	"node-horseman":"*",
   "grunt-cli":"*",
   "mocha":"*",
-  "chai":"*"
+  "chai":"*",
+  "body-parser":"*"
   }
 }
