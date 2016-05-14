@@ -99,6 +99,13 @@ var counter=0;
    $("#div"+data).remove()
 
  }
+
+ socket.on('add right pan', function(css){
+
+   $(".objectadd").append("  <div id='div"+counter+"'class='row'>   <ul class='collection'> <li><div class='row'> <div class='input-field col s12'> css <input id='css"+counter+"' type='text' value='"+css+"' class='validate'> </div><div class='input-field col s12'><select id='sel"+counter+"'><option value='1'>nothing</option><option value='2'>href</option><option value='3'>src</option></select><label>Attrib</label></div><div class='input-field col s12'><input id='name"+counter+"' type='text' class='validate'><label for='name'>Name</label></div><br><br><br><a onclick='removeme("+counter+")'  class='waves-effect waves-light btn'>remove</a></div></li></ul></div>");
+   $('select').material_select();
+  counter++;
+ })
 </script>
 </body>
 </html>
