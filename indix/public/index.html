@@ -72,7 +72,18 @@ footer{
 
         </footer>
 <script>
+var socket = io();
+$("#search").keypress(function(event) {
+    if (event.which == 13) {
+      socket.emit("newWebpage",$("#search").val());
 
+    }
+});
+socket.on('reloadiframe',function(message){
+  var iframe = document.getElementById("myiframe");
+  iframe.src = iframe.src;
+  $("#summaryy").val("")
+})
 var counter=0;
  $("#addbutton").click(function(event){
 
