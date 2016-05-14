@@ -48,7 +48,7 @@ app.get('/getnewiframe',function(req,res){
 })
 
 app.post('/processData',function(req,res){
-console.log(req.body.objects)
+
   var jobj = req.body.fine;
 
   var final_json= " ";
@@ -83,7 +83,7 @@ console.log(req.body.objects)
     }
 
   }
-  
+
   res.send("success");
 })
 
