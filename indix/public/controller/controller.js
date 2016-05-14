@@ -2,8 +2,11 @@
 
 var vikeneAppControllers = angular.module('vikenAppControllers',[]);
 
-vikeneAppControllers.controller('hctrl',['$scope','$http',function($scope,$http)
+vikeneAppControllers.controller('hctrl',['$scope','$http','$location',function($scope,$http,$location)
                      {
+                       $scope.process = function(){
+                         $location.url("/home/"+$scope.searchD);
+                       }
 
 
 }]);
