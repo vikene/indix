@@ -159,3 +159,4 @@ io.on('connection',function(socket)
   })
 })
 http.listen(8000);
+module.exports = app;

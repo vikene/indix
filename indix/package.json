@@ -9,13 +9,14 @@
   "author": "vigneash sundara",
   "license": "mit",
   "dependencies": {
+    "body-parser": "*",
+    "chai": "*",
+    "chai-http": "^2.0.1",
     "express": "*",
+    "grunt-cli": "*",
     "materialize-css": "^0.97.6",
-    "socket.io": "*",
-	"node-horseman":"*",
-  "grunt-cli":"*",
-  "mocha":"*",
-  "chai":"*",
-  "body-parser":"*"
+    "mocha": "*",
+    "node-horseman": "*",
+    "socket.io": "*"
   }
 }
