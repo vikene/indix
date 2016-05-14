@@ -2979,7 +2979,7 @@ footer.page-footer {
 }
 
 footer.page-footer .footer-copyright {
-  overflow: hidden;
+
   height: 50px;
   line-height: 50px;
   color: rgba(255, 255, 255, 0.8);
@@ -5555,8 +5555,8 @@ input[type=search]:disabled,
 input[type=search][readonly="readonly"],
 textarea.materialize-textarea:disabled,
 textarea.materialize-textarea[readonly="readonly"] {
-  color: rgba(0, 0, 0, 0.26);
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
 }
 
 input:not([type]):disabled + label,

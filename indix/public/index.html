@@ -21,6 +21,9 @@ footer{
    z-index: 5;
 }
 
+#summaryy{
+  overflow-y: scroll;
+}
 #search{
   line-height: 60px;
   height: 60px;
@@ -63,6 +66,7 @@ footer{
               <div class="row">
 
         <div class="input-field col s12">
+
           <textarea disabled id="summaryy" class="materialize-textarea"></textarea>
           <label for="summaryy">Summary</label>
         </div>
@@ -141,8 +145,9 @@ var counter=0;
  })
 
  socket.on("appendSummary",function(msg,msg1){
-   console.log(msg1);
-     $("#summaryy").append("{ name:"+msg+", summary:"+msg1+"}");
+
+     document.getElementById("summaryy").value= document.getElementById("summaryy").value + "\n"+"{ name:"+msg+", summary:"+msg1+"}";
+     console.log(msg1);
  })
 </script>
 </body>
