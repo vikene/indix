@@ -88,7 +88,7 @@ var counter=0;
  $("#addbutton").click(function(event){
 
 
- $(".objectadd").append("  <div id='div"+counter+"'class='row'>   <ul class='collection'> <li><div class='row'> <div class='input-field col s12'> <input id='css"+counter+"' type='text' class='validate'> <label for='css'>css</label></div><div class='input-field col s12'><select id='sel"+counter+"'><option value='1'>nothing</option><option value='2'>href</option><option value='3'>src</option></select><label>Attrib</label></div><div class='input-field col s12'><input id='name"+counter+"' type='text' class='validate'><label for='name'>Name</label></div><br><br><br><a onclick='removeme("+counter+")'  class='waves-effect waves-light btn'>remove</a></div></li></ul></div>");
+ $(".objectadd").append("  <div id='div"+counter+"'class='row'>   <ul class='collection'> <li><div class='row'> <div class='input-field col s12'> <input id='css"+counter+"' type='text' class='validate'> <label for='css'>css</label></div><div class='input-field col s12'><select id='sel"+counter+"'><option>nothing</option><option>href</option><option>src</option></select><label>Attrib</label></div><div class='input-field col s12'><input id='name"+counter+"' type='text' class='validate'><label for='name'>Name</label></div><br><br><br><a onclick='removeme("+counter+")'  class='waves-effect waves-light btn'>remove</a></div></li></ul></div>");
  counter++;
  console.log("added")
   $('select').material_select();
@@ -102,7 +102,7 @@ var counter=0;
 
  socket.on('add right pan', function(css){
 
-   $(".objectadd").append("  <div id='div"+counter+"'class='row'>   <ul class='collection'> <li><div class='row'> <div class='input-field col s12'> css <input id='css"+counter+"' type='text' value='"+css+"' class='validate'> </div><div class='input-field col s12'><select id='sel"+counter+"'><option value='1'>nothing</option><option value='2'>href</option><option value='3'>src</option></select><label>Attrib</label></div><div class='input-field col s12'><input id='name"+counter+"' type='text' class='validate'><label for='name'>Name</label></div><br><br><br><a onclick='removeme("+counter+")'  class='waves-effect waves-light btn'>remove</a></div></li></ul></div>");
+   $(".objectadd").append("  <div id='div"+counter+"'class='row'>   <ul class='collection'> <li><div class='row'> <div class='input-field col s12'> css <input id='css"+counter+"' type='text' value='"+css+"' class='validate'> </div><div class='input-field col s12'><select id='sel"+counter+"'><option>nothing</option><option>href</option><option>src</option></select><label>Attrib</label></div><div class='input-field col s12'><input id='name"+counter+"' type='text' class='validate'><label for='name'>Name</label></div><br><br><br><a onclick='removeme("+counter+")'  class='waves-effect waves-light btn'>remove</a></div></li></ul></div>");
    $('select').material_select();
   counter++;
  })
@@ -116,7 +116,7 @@ var counter=0;
      var o1 = $("#css"+i).val();
      console.log(o1)
      var q1= $("#name"+i).val();
-     var att = $("#select"+i).val();
+     var att = $("#sel"+i).val();
      if(o1 == null){continue;}
      final_json= final_json + "{";
      final_json = final_json + '"css": "'+o1+'",';
@@ -138,6 +138,11 @@ var counter=0;
 
    console.log(final_json)
    socket.emit("output_please",final_json);
+ })
+
+ socket.on("appendSummary",function(msg,msg1){
+   console.log(msg1);
+    // $("#summaryy").append("{ name:"+msg+", summary:"+msg1+"}");
  })
 </script>
 </body>
