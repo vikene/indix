@@ -33,10 +33,7 @@ var counter=0;
   counter++;
  })
 
- $("#process").click(function(event){
 
-  // socket.emit("output_please",final_json);
- })
 
  socket.on("appendSummary",function(msg,msg1){
 

@@ -47,6 +47,46 @@ app.get('/getnewiframe',function(req,res){
 
 })
 
+app.post('/processData',function(req,res){
+console.log(req.body.objects)
+  var jobj = req.body.fine;
+
+  var final_json= " ";
+  for(var i=0;i<jobj.objects.length;i++)
+  {
+    if(jobj.objects[i].attribute != "undefined" && jobj.objects[i].attribute != "nothing" )
+    {
+      var da = String(msgG);
+      var horsem = new Horseman();
+      console.log(jobj.objects[i].css)
+      var name = jobj.objects[i].name
+      horsem.open(da)
+              .attribute(jobj.objects[i].css,jobj.objects[i].attribute)
+              .then(function(data){
+
+                io.emit("appendSummary",name,data)
+              })
+    }
+    else if(jobj.objects[i].attribute != "undefined"){
+      var da = String(msgG);
+      var horse = new Horseman();
+      var name = jobj.objects[i].name;
+      horse.open(da)
+      .text(jobj.objects[i].css)
+      .then(function(data){
+
+        //jobj.objects[i].summary = data
+        io.emit("appendSummary",name,data)
+
+
+      })
+    }
+
+  }
+  
+  res.send("success");
+})
+
 io.on('connection',function(socket)
 {
   console.log("Connected !!");
@@ -115,7 +155,7 @@ io.on('connection',function(socket)
         })
       }
     }
-    console.log(JSON.stringify(jobj))
+
   })
 })
 http.listen(8000);

@@ -24,7 +24,7 @@ vikeneAppControllers.controller('finalctrl', ['$scope','$http','$routeParams','$
 
   $scope.myexecute= function(){
     var mylist = []
-    var final_json='{"objects":[';
+    var final_json='{"fine":{"objects":[';
     console.log(counter)
     for(var i=0;i<counter;i++)
     {
@@ -47,13 +47,13 @@ vikeneAppControllers.controller('finalctrl', ['$scope','$http','$routeParams','$
       }
 
     }
-    final_json= final_json + "]}";
+    final_json= final_json + "]}}";
     final_json = String(final_json);
-    final_json = final_json.replace(",]}","]}");
+    final_json = final_json.replace(",]}}","]}}");
 
     console.log(final_json)
     $http.post('/processData',final_json).success(function(data,status){
-      
+      console.log(data);
     })
   }
   var da = $routeParams.URLID;
