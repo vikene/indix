@@ -1,0 +1,16 @@
+footer{
+  position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 150px;
+   z-index: 5;
+}
+
+#summaryy{
+  overflow-y: scroll;
+}
+#search{
+  line-height: 60px;
+  height: 60px;
+}
