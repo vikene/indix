@@ -6,9 +6,11 @@ Indix coding challenge
 </title>
 <script src="/lib/socket.io-1.2.0.js"></script>
 <script src="/lib/jquery-1.11.1.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+<link rel="stylesheet" href="/css/materialize.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 <script type="text/javascript" src="/js/jquery.sticky.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <style>
 footer{
   position: fixed;
@@ -16,6 +18,11 @@ footer{
    left: 0;
    right: 0;
    height: 150px;
+}
+
+#search{
+  line-height: 60px;
+  height: 60px;
 }
 </style>
 </head>
@@ -51,17 +58,16 @@ footer{
 
     </div>
     <footer  id="mfooter" class="page-footer">
-          <div class="container">
-            <div class="row">
+
               <div class="row">
+
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Textarea</label>
+          <textarea disabled id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">Summary</label>
         </div>
       </div>
 
-            </div>
-          </div>
+
 
         </footer>
 <script>
