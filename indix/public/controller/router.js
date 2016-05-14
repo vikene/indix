@@ -12,11 +12,11 @@ vikeneApp.config(['$routeProvider',
 	{
 		$routeProvider.
 		when('/home',{
-			templateUrl: 'views/final.html',
-			controller: 'finalctrl'
+			templateUrl: 'views/home.html',
+			controller: 'hctrl'
 
 		}).
-		when('/home/:URLID',{
+		when('/home/:URLID*',{
 			templateUrl: 'views/final.html',
 			controller:'finalctrl'
 		}).
