@@ -41,7 +41,7 @@ app.get('/getnewiframe',function(req,res){
 
       fs.writeFile("public/1.html",mydata,function(err,data){
         res.send("done!")
-        horseman.close();
+        
       });
 
 
