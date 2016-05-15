@@ -30,6 +30,7 @@ app.get('/getnewiframe',function(req,res){
   msg=req.query.urll;
   msgG=msg;
   console.log("refesh");
+  var horseman = new Horseman();
   horseman
     .open(msg)
     .html()
@@ -40,6 +41,7 @@ app.get('/getnewiframe',function(req,res){
 
       fs.writeFile("public/1.html",mydata,function(err,data){
         res.send("done!")
+        horseman.close();
       });
 
 
