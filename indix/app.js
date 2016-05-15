@@ -8,7 +8,7 @@ var horseman = new Horseman();
 var fs = require('fs');
 
 var bodyParser = require('body-parser');
-var msgG="https://news.ycombinator.com/news?p=3"
+var msgG="https://news.ycombinator.com/"
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -58,7 +58,7 @@ app.post('/processData',function(req,res){
     {
       var da = String(msgG);
       var horsem = new Horseman();
-      console.log(jobj.objects[i].css)
+
       var name = jobj.objects[i].name
       horsem.open(da)
               .attribute(jobj.objects[i].css,jobj.objects[i].attribute)
@@ -84,7 +84,7 @@ app.post('/processData',function(req,res){
 
   }
 
-  res.send("success");
+  res.json({'success':'done'});
 })
 
 io.on('connection',function(socket)
